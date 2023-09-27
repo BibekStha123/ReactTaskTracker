@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Doctor Appointment",
+      "date": "12/02/2023",
+      "reminder": true
+    },
+    {
+      "id": 2,
+      "text": "Assignment Submision",
+      "date": "23/03/2023",
+      "reminder": false
+    },
+    {
+      "id": 3,
+      "text": "License Exam",
+      "date": "02/03/2023",
+      "reminder": false
+    }
+  ]
+}

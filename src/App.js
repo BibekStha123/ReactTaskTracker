@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/Header";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 import Footer from "./components/Footer";
@@ -9,26 +9,18 @@ import About from "./components/About";
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false);
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: "Doctor Appointment",
-      date: "12/02/2023",
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: "Assignment Submision",
-      date: "23/03/2023",
-      reminder: false,
-    },
-    {
-      id: 3,
-      text: "License Exam",
-      date: "02/03/2023",
-      reminder: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const res = await fetch("http://localhost:5000/tasks");
+      const data = await res.json();
+
+      setTasks(data);
+    };
+
+    fetchTasks();
+  }, []);
 
   // delete task
   const deleteTask = (id) => {
